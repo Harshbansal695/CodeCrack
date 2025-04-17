@@ -11,8 +11,6 @@ import {
   FiLoader,
 } from "react-icons/fi";
 
-const URL = "https://codecrack-jmqf.onrender.com";
-
 const Quize = () => {
   const [quizData, setQuizData] = useState({
     quizName: "",
@@ -54,7 +52,7 @@ const Quize = () => {
     setUser(storedUser);
   }, []);
 
-  const sendResultsToBackend = async () => {
+  const sendResultsToBackend = async (finalScore) => {
     setIsSendingResults(true);
     setApiError(null);
 
@@ -65,7 +63,6 @@ const Quize = () => {
         throw new Error("Please log in to save your quiz results");
       }
 
-      const finalScore = score;
       const totalQuestions = quizData.questions.length;
       const percentage = Math.round((finalScore / totalQuestions) * 100);
 
@@ -80,11 +77,15 @@ const Quize = () => {
         timeTaken: timeSpent,
       };
 
-      const response = await axios.post(`${URL}/api/quiz/save`, resultsData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_URL}/api/quiz/save`,
+        resultsData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     } catch (error) {
       setApiError(
         error.response?.data?.error ||
@@ -99,18 +100,17 @@ const Quize = () => {
     if (!selectedAnswer) {
       setSelectedAnswer(option);
       const isCorrect = option === quizData.questions[currentIndex].answer;
+      const newScore = isCorrect ? score + 1 : score;
 
       setTimeout(() => {
-        if (isCorrect) {
-          setScore((prevScore) => prevScore + 1);
-        }
-
         if (currentIndex + 1 < quizData.questions.length) {
           setCurrentIndex((prevIndex) => prevIndex + 1);
           setSelectedAnswer(null);
+          setScore(newScore);
         } else {
+          setScore(newScore);
           setShowResult(true);
-          sendResultsToBackend();
+          sendResultsToBackend(newScore);
         }
       }, 1000);
     }

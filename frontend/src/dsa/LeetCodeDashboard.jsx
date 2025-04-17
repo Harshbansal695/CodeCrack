@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Papa from "papaparse";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
-const URL = "https://codecrack-jmqf.onrender.com";
 
 // ====================== UI Components ======================
 const Card = ({ children, className = "" }) => (
@@ -518,7 +517,7 @@ const LeetCodeDashboard = () => {
       try {
         setIsLoadingCompleted(true);
         const response = await fetch(
-          `${URL}/api/v1/dsa/gprogress?email=${storedUser.email}`
+          `${process.env.REACT_APP_URL}/api/v1/dsa/gprogress?email=${storedUser.email}`
         );
 
         if (!response.ok) {
@@ -687,13 +686,16 @@ const LeetCodeDashboard = () => {
         };
 
         // Make API call to update progress
-        const response = await fetch(`${URL}/api/v1/dsa/progress`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_URL}/api/v1/dsa/progress`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+          }
+        );
 
         if (!response.ok) {
           // Revert changes if API call fails

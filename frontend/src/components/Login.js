@@ -4,7 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight } from "react-icons/fi";
-const URL = "https://codecrack-jmqf.onrender.com";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
@@ -17,10 +16,13 @@ const Login = ({ setUser }) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { data } = await axios.post(`${URL}/api/v1/user/login`, {
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_URL}/api/v1/user/login`,
+        {
+          email,
+          password,
+        }
+      );
 
       if (data.success) {
         localStorage.setItem("user", JSON.stringify(data.user));

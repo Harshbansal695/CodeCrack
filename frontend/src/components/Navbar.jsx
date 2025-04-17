@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const URL = "https://codecrack-jmqf.onrender.com";
 
 const Navbar = ({ user, setUser }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -26,9 +25,9 @@ const Navbar = ({ user, setUser }) => {
       if (isLoggedIn) {
         try {
           const response = await axios.get(
-            `${URL}/api/v1/user/by-email?email=${encodeURIComponent(
-              user.email
-            )}`
+            `${
+              process.env.REACT_APP_URL
+            }/api/v1/user/by-email?email=${encodeURIComponent(user.email)}`
           );
           if (response.data.success) {
             setUserDetails(response.data.user);
@@ -46,7 +45,7 @@ const Navbar = ({ user, setUser }) => {
     setShowDropdown(false);
 
     try {
-      await axios.post(`${URL}/api/v1/user/logout`, {
+      await axios.post(`${process.env.REACT_APP_URL}/api/v1/user/logout`, {
         withCredentials: true,
       });
 

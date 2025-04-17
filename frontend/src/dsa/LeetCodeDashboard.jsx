@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Papa from "papaparse";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
-const URL = "http://localhost:4000";
+const URL = "https://codecrack-jmqf.onrender.com";
 
 // ====================== UI Components ======================
 const Card = ({ children, className = "" }) => (

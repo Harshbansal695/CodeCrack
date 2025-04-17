@@ -11,7 +11,7 @@ import {
   FiLoader,
 } from "react-icons/fi";
 
-const URL = "http://localhost:4000";
+const URL = "https://codecrack-jmqf.onrender.com";
 
 const Quize = () => {
   const [quizData, setQuizData] = useState({

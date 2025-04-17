@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-const URL = "http://localhost:4000";
+const URL = "https://codecrack-jmqf.onrender.com";
 
 const Dashboard = () => {
   const [quizzes, setQuizzes] = useState([]);

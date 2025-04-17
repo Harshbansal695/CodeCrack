@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { FiMail, FiLock, FiEye, FiEyeOff, FiArrowRight } from "react-icons/fi";
-const URL = "http://localhost:4000";
+const URL = "https://codecrack-jmqf.onrender.com";
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");

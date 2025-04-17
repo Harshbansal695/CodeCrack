@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const URL = "http://localhost:4000";
+const URL = "https://codecrack-jmqf.onrender.com";
 const Signup = () => {
   const [formData, setFormData] = useState({
     fullname: "",

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const URL = "https://codecrack-jmqf.onrender.com";
 const Signup = () => {
   const [formData, setFormData] = useState({
     fullname: "",
@@ -154,7 +153,7 @@ const Signup = () => {
       }
 
       const response = await axios.post(
-        `${URL}/api/v1/user/register`,
+        `${process.env.REACT_APP_URL}/api/v1/user/register`,
         userData,
         {
           headers: {

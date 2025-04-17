@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-const URL = "https://codecrack-jmqf.onrender.com";
 
 const Dashboard = () => {
   const [quizzes, setQuizzes] = useState([]);
@@ -25,7 +24,9 @@ const Dashboard = () => {
       try {
         setIsLoadingDsa(true);
         const response = await fetch(
-          `${URL}/api/v1/dsa/gprogress?email=${encodeURIComponent(email)}`
+          `${
+            process.env.REACT_APP_URL
+          }/api/v1/dsa/gprogress?email=${encodeURIComponent(email)}`
         );
 
         if (!response.ok) {
@@ -84,7 +85,9 @@ const Dashboard = () => {
 
         // Fetch user details by email
         const userResponse = await axios.get(
-          `${URL}/api/v1/user/by-email?email=${encodeURIComponent(userEmail)}`
+          `${
+            process.env.REACT_APP_URL
+          }/api/v1/user/by-email?email=${encodeURIComponent(userEmail)}`
         );
 
         if (!userResponse.data.success) {
@@ -101,7 +104,7 @@ const Dashboard = () => {
         // Fetch quizzes by user ID
         try {
           const quizzesResponse = await axios.get(
-            `${URL}/api/quiz/user/${userData._id}`
+            `${process.env.REACT_APP_URL}/api/quiz/user/${userData._id}`
           );
           setQuizzes(quizzesResponse.data.quizzes || []);
         } catch (quizError) {
@@ -139,7 +142,7 @@ const Dashboard = () => {
 
       // Update user profile with new image
       const updateResponse = await axios.put(
-        `${URL}/api/v1/user/update-profile`,
+        `${process.env.REACT_APP_URL}/api/v1/user/update-profile`,
         {
           userId: userDetails._id,
           images: [imageUrl],

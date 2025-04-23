@@ -35,6 +35,30 @@ const Logicalquiz = () => {
         explanation: "Once you share a secret, it's no longer just yours.",
         difficulty: "hard",
       },
+      {
+        id: 4,
+        question:
+          "I'm light as a feather, yet the strongest person can't hold me for more than 5 minutes. What am I?",
+        options: ["Breath", "Thought", "Shadow", "Bubble"],
+        correctAnswer: 0,
+        explanation: "People can't hold their breath for long periods.",
+        difficulty: "medium",
+      },
+      {
+        id: 5,
+        question:
+          "What comes once in a minute, twice in a moment, but never in a thousand years?",
+        options: [
+          "The letter 'M'",
+          "The number '1'",
+          "The letter 'E'",
+          "The number '0'",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "The letter 'M' appears once in 'minute' and twice in 'moment'.",
+        difficulty: "hard",
+      },
     ],
     syllogism: [
       {
@@ -50,6 +74,65 @@ const Logicalquiz = () => {
         explanation: "The conclusion cannot be derived.",
         difficulty: "medium",
       },
+      {
+        id: 2,
+        question:
+          "All roses are flowers. Some flowers fade quickly. Therefore:",
+        options: [
+          "All roses fade quickly",
+          "Some roses fade quickly",
+          "No conclusion possible",
+          "Flowers that fade quickly are roses",
+        ],
+        correctAnswer: 2,
+        explanation:
+          "We cannot conclude anything about roses from this information.",
+        difficulty: "easy",
+      },
+      {
+        id: 3,
+        question: "No humans are perfect. All doctors are humans. Therefore:",
+        options: [
+          "No doctors are perfect",
+          "Some doctors are perfect",
+          "All perfect beings are doctors",
+          "No conclusion possible",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "If no humans are perfect and all doctors are humans, then no doctors are perfect.",
+        difficulty: "medium",
+      },
+      {
+        id: 4,
+        question:
+          "Some books are novels. All novels are interesting. Therefore:",
+        options: [
+          "All books are interesting",
+          "Some books are interesting",
+          "No books are interesting",
+          "All interesting things are novels",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Since some books are novels and all novels are interesting, some books must be interesting.",
+        difficulty: "easy",
+      },
+      {
+        id: 5,
+        question:
+          "All athletes are fit. Some fit people are doctors. Therefore:",
+        options: [
+          "All doctors are athletes",
+          "Some athletes are doctors",
+          "No conclusion possible",
+          "All fit people are athletes",
+        ],
+        correctAnswer: 2,
+        explanation:
+          "No definite conclusion can be drawn about the relationship between athletes and doctors.",
+        difficulty: "hard",
+      },
     ],
     coding_decoding: [
       {
@@ -59,6 +142,45 @@ const Logicalquiz = () => {
         options: ["ANANAB", "NANAAB", "AANNAB", "ABNANA"],
         correctAnswer: 0,
         explanation: "The word is reversed, so BANANA → ANANAB.",
+        difficulty: "easy",
+      },
+      {
+        id: 2,
+        question:
+          "If 'DOG' is coded as 'GLJ', how is 'CAT' coded in the same scheme?",
+        options: ["FDW", "ECV", "DBU", "GDX"],
+        correctAnswer: 0,
+        explanation:
+          "Each letter moves forward by 3, 4, and 5 positions respectively (D→G, O→L, G→J).",
+        difficulty: "medium",
+      },
+      {
+        id: 3,
+        question:
+          "In a certain code, '123' means 'hot coffee'. '356' means 'very hot'. '64' means 'cold milk'. What does '5' stand for?",
+        options: ["hot", "very", "coffee", "cold"],
+        correctAnswer: 0,
+        explanation:
+          "Comparing the first two codes, 'hot' appears in both and both contain '3' and '5', so '5' must be 'hot'.",
+        difficulty: "hard",
+      },
+      {
+        id: 4,
+        question:
+          "If 'PENCIL' is written as 'NCPEIL', how is 'ERASER' written in the same code?",
+        options: ["REAESR", "ARESRE", "SREERA", "AERESR"],
+        correctAnswer: 1,
+        explanation:
+          "The pattern is: swap first two letters, next two letters, and last two letters.",
+        difficulty: "medium",
+      },
+      {
+        id: 5,
+        question:
+          "In a numerical code, 'Z' is 26, 'A' is 1. If 'CODE' is '3-15-4-5', what is 'LOGIC'?",
+        options: ["12-15-7-9-3", "15-12-7-9-3", "12-15-9-7-3", "15-12-9-7-3"],
+        correctAnswer: 0,
+        explanation: "L=12, O=15, G=7, I=9, C=3 → 12-15-7-9-3",
         difficulty: "easy",
       },
     ],
@@ -71,6 +193,45 @@ const Logicalquiz = () => {
         correctAnswer: 0,
         explanation: "If B is not the son, B must be the daughter.",
         difficulty: "easy",
+      },
+      {
+        id: 2,
+        question:
+          "Pointing to a woman, a man said, 'Her brother's father is my father's son.' How is the woman related to the man?",
+        options: ["Sister", "Daughter", "Mother", "Aunt"],
+        correctAnswer: 0,
+        explanation:
+          "'My father's son' is the man himself, making the woman his sister.",
+        difficulty: "medium",
+      },
+      {
+        id: 3,
+        question: "A's mother is B's daughter. How is A related to B?",
+        options: ["Grandchild", "Child", "Niece/Nephew", "Sibling"],
+        correctAnswer: 0,
+        explanation:
+          "If A's mother is B's daughter, then B is A's grandparent.",
+        difficulty: "hard",
+      },
+      {
+        id: 4,
+        question:
+          "If X is Y's brother, Y is Z's father, and Z is W's sister, how is W related to X?",
+        options: ["Niece/Nephew", "Son/Daughter", "Sister", "Mother"],
+        correctAnswer: 1,
+        explanation:
+          "X is Z's uncle, making W (Z's sibling) X's niece or nephew.",
+        difficulty: "medium",
+      },
+      {
+        id: 5,
+        question:
+          "Introducing a boy, a girl said, 'He is the son of my mother's only daughter.' How is the girl related to the boy?",
+        options: ["Mother", "Sister", "Aunt", "Grandmother"],
+        correctAnswer: 0,
+        explanation:
+          "'My mother's only daughter' is the girl herself, making the boy her son.",
+        difficulty: "hard",
       },
     ],
   };

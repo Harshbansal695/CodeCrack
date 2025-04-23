@@ -35,6 +35,42 @@ const Verbalquiz = () => {
         explanation: "Collective nouns like 'team' take singular verbs.",
         difficulty: "medium",
       },
+      {
+        id: 3,
+        question: "Which sentence uses the correct tense?",
+        options: [
+          "I have seen that movie yesterday.",
+          "I saw that movie yesterday.",
+          "I was seeing that movie yesterday.",
+          "I had seen that movie yesterday.",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Simple past tense ('saw') is correct for completed past actions.",
+        difficulty: "medium",
+      },
+      {
+        id: 4,
+        question: "Choose the correct preposition: 'She is allergic ___ cats.'",
+        options: ["with", "to", "for", "at"],
+        correctAnswer: 1,
+        explanation: "The correct preposition with 'allergic' is 'to'.",
+        difficulty: "easy",
+      },
+      {
+        id: 5,
+        question: "Identify the correct passive voice:",
+        options: [
+          "The letter was written by Sarah.",
+          "Sarah was written the letter.",
+          "The letter written by Sarah.",
+          "Sarah written the letter.",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Passive voice structure: object + was/were + past participle + by + subject.",
+        difficulty: "hard",
+      },
     ],
     vocabulary: [
       {
@@ -53,6 +89,31 @@ const Verbalquiz = () => {
         explanation: "'Benevolent' means kind, so opposite is 'Malevolent'.",
         difficulty: "easy",
       },
+      {
+        id: 3,
+        question: "What does 'Ephemeral' mean?",
+        options: ["Permanent", "Short-lived", "Ancient", "Complex"],
+        correctAnswer: 1,
+        explanation: "'Ephemeral' means lasting for a very short time.",
+        difficulty: "hard",
+      },
+      {
+        id: 4,
+        question: "Choose the correct meaning of 'Ubiquitous'",
+        options: ["Rare", "Present everywhere", "Expensive", "Tiny"],
+        correctAnswer: 1,
+        explanation: "'Ubiquitous' means present or existing everywhere.",
+        difficulty: "medium",
+      },
+      {
+        id: 5,
+        question: "Which word means 'to make worse'?",
+        options: ["Alleviate", "Ameliorate", "Exacerbate", "Mitigate"],
+        correctAnswer: 2,
+        explanation:
+          "'Exacerbate' means to make a problem, bad situation, or negative feeling worse.",
+        difficulty: "hard",
+      },
     ],
     comprehension: [
       {
@@ -69,6 +130,52 @@ const Verbalquiz = () => {
           "The main idea refers to the central message of the passage.",
         difficulty: "easy",
       },
+      {
+        id: 2,
+        question: "What is the purpose of supporting details in a passage?",
+        options: [
+          "To confuse the reader",
+          "To provide evidence for the main idea",
+          "To list unrelated facts",
+          "To make the passage longer",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Supporting details provide evidence, examples, or explanations for the main idea.",
+        difficulty: "easy",
+      },
+      {
+        id: 3,
+        question:
+          "What is the tone of a passage that uses words like 'devastating', 'tragic', and 'heartbreaking'?",
+        options: ["Joyful", "Neutral", "Somber", "Humorous"],
+        correctAnswer: 2,
+        explanation: "These words indicate a sad or serious tone.",
+        difficulty: "medium",
+      },
+      {
+        id: 4,
+        question: "What does it mean to 'make an inference' while reading?",
+        options: [
+          "To guess randomly",
+          "To draw conclusions based on evidence",
+          "To skip difficult parts",
+          "To memorize the text",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Inferences are logical conclusions drawn from evidence in the text.",
+        difficulty: "medium",
+      },
+      {
+        id: 5,
+        question: "What is the author's purpose in a persuasive passage?",
+        options: ["To inform", "To entertain", "To convince", "To describe"],
+        correctAnswer: 2,
+        explanation:
+          "Persuasive writing aims to convince the reader of a particular viewpoint.",
+        difficulty: "hard",
+      },
     ],
     para_jumbles: [
       {
@@ -84,6 +191,49 @@ const Verbalquiz = () => {
         explanation:
           "The first sentence of a paragraph should introduce the topic.",
         difficulty: "medium",
+      },
+      {
+        id: 2,
+        question:
+          "What is the most logical sequence for these sentences? (1) Therefore, we should conserve water. (2) Many regions face water shortages. (3) Water is a precious resource.",
+        options: ["3-2-1", "2-1-3", "1-2-3", "3-1-2"],
+        correctAnswer: 0,
+        explanation:
+          "Logical sequence: General statement (3), problem (2), conclusion (1).",
+        difficulty: "hard",
+      },
+      {
+        id: 3,
+        question:
+          "Which transition word best connects these ideas: 'The plan was good. ____, it failed due to poor execution.'",
+        options: ["However", "Therefore", "Similarly", "Moreover"],
+        correctAnswer: 0,
+        explanation:
+          "'However' shows contrast between the good plan and its failure.",
+        difficulty: "medium",
+      },
+      {
+        id: 4,
+        question: "Which sentence is most likely the concluding sentence?",
+        options: [
+          "First, let's examine the causes.",
+          "For example, consider the recent case.",
+          "In conclusion, the evidence supports this view.",
+          "Additionally, there are other factors.",
+        ],
+        correctAnswer: 2,
+        explanation:
+          "Phrases like 'In conclusion' typically introduce concluding sentences.",
+        difficulty: "easy",
+      },
+      {
+        id: 5,
+        question:
+          "What is the best way to organize these sentences about baking? (A) Preheat the oven (B) Mix ingredients (C) Enjoy your cake (D) Bake for 30 minutes",
+        options: ["A-B-D-C", "B-A-D-C", "D-A-B-C", "C-B-A-D"],
+        correctAnswer: 0,
+        explanation: "Correct baking sequence: Preheat, mix, bake, then enjoy.",
+        difficulty: "hard",
       },
     ],
   };

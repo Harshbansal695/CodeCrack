@@ -1,6 +1,7 @@
 import React from "react";
 import { FaCode, FaBrain, FaBookOpen, FaRocket } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   const features = [
@@ -37,7 +38,7 @@ const AboutUs = () => {
         <div className="text-center">
           <h1 className="text-5xl font-extrabold mb-6">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-              About AlgoMate
+              About CodeCrack
             </span>
           </h1>
           <p className="text-xl text-[#C5C6EF] max-w-3xl mx-auto">
@@ -57,8 +58,8 @@ const AboutUs = () => {
           </h2>
           <div className="text-center">
             <p className="text-lg text-[#C5C6EF] mb-6">
-              AlgoMate is a solo project dedicated to helping developers improve
-              their technical skills. I believe that mastering technical
+              CodeCracl is a solo project dedicated to helping developers
+              improve their technical skills. I believe that mastering technical
               concepts should be accessible, engaging, and effective.
             </p>
             <p className="text-lg text-[#C5C6EF]">
@@ -143,12 +144,15 @@ const AboutUs = () => {
             Ready to boost your technical skills?
           </h2>
           <p className="text-xl text-[#C5C6EF] mb-8 max-w-2xl mx-auto">
-            Start your journey with AlgoMate today and take your coding skills
+            Start your journey with CodeCrack today and take your coding skills
             to the next level.
           </p>
-          <button className="px-8 py-3 rounded-lg text-lg font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-purple-500/30">
+          <Link
+            to="/dsa"
+            className="px-8 py-3 rounded-lg text-lg font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-purple-500/30"
+          >
             Get Started Now
-          </button>
+          </Link>
         </div>
       </section>
     </div>

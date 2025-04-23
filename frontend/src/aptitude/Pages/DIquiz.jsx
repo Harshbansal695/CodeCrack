@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 const DIquiz = () => {
   const { subtopic } = useParams();
   const navigate = useNavigate();
-
   // 📌 Question Bank
   const questionBank = {
     tables: [
@@ -25,6 +24,32 @@ const DIquiz = () => {
         correctAnswer: 1,
         explanation:
           "Compound annual growth rate formula gives approximately 8%",
+      },
+      {
+        id: 3,
+        question:
+          "A survey shows 60% of people like Tea and 40% like Coffee. If 20% like both, what percentage like only Tea?",
+        options: ["20%", "30%", "40%", "50%"],
+        correctAnswer: 2,
+        explanation:
+          "Only Tea = Total Tea lovers (60%) - Those who like both (20%) = 40%.",
+      },
+      {
+        id: 4,
+        question:
+          "A company has 80 employees. 45 work in Marketing, 35 in Finance, and 10 in both. How many work in neither department?",
+        options: ["5", "10", "15", "20"],
+        correctAnswer: 1,
+        explanation:
+          "Using the principle of inclusion-exclusion: 45 + 35 - 10 = 70 work in either department, so 80 - 70 = 10 work in neither.",
+      },
+      {
+        id: 5,
+        question:
+          "In a table of monthly expenses, if January is $2000 and February is 10% less, what is February's expense?",
+        options: ["$1800", "$1900", "$1700", "$1600"],
+        correctAnswer: 0,
+        explanation: "10% of 2000 is 200, so February = 2000 - 200 = $1800.",
       },
     ],
     charts: [
@@ -49,6 +74,41 @@ const DIquiz = () => {
         explanation:
           "The color legend identifies which product each color represents.",
       },
+      {
+        id: 3,
+        question:
+          "Which chart type is best for comparing categories side-by-side?",
+        options: ["Pie Chart", "Bar Chart", "Line Chart", "Area Chart"],
+        correctAnswer: 1,
+        explanation:
+          "Bar charts are ideal for direct comparison between categories.",
+      },
+      {
+        id: 4,
+        question: "When would you use a waterfall chart?",
+        options: [
+          "To show cumulative effect of sequential values",
+          "To display geographic data",
+          "To compare unrelated categories",
+          "To show continuous data over time",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Waterfall charts are used to show how an initial value is affected by a series of intermediate values.",
+      },
+      {
+        id: 5,
+        question: "What is the primary purpose of a bubble chart?",
+        options: [
+          "To show relationships between three variables",
+          "To display hierarchical data",
+          "To compare two categorical variables",
+          "To show changes over time",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Bubble charts display three dimensions of data: x-axis, y-axis, and bubble size.",
+      },
     ],
     graphs: [
       {
@@ -70,6 +130,40 @@ const DIquiz = () => {
         correctAnswer: 1,
         explanation:
           "Steeper slopes indicate more rapid changes in the variable.",
+      },
+      {
+        id: 3,
+        question: "Which graph would best show the distribution of a dataset?",
+        options: ["Line Graph", "Scatter Plot", "Histogram", "Pie Chart"],
+        correctAnswer: 2,
+        explanation:
+          "Histograms are specifically designed to show data distributions.",
+      },
+      {
+        id: 4,
+        question: "What does each dot represent in a scatter plot?",
+        options: [
+          "A category average",
+          "A single data point",
+          "A percentage of the whole",
+          "A time series value",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Each dot in a scatter plot represents an individual data point with x and y coordinates.",
+      },
+      {
+        id: 5,
+        question: "When would you use a logarithmic scale on a graph?",
+        options: [
+          "When data spans several orders of magnitude",
+          "When comparing exact values is important",
+          "When displaying categorical data",
+          "When showing parts of a whole",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Logarithmic scales are useful when data varies exponentially or covers a wide range of values.",
       },
     ],
     case_studies: [
@@ -95,6 +189,38 @@ const DIquiz = () => {
         correctAnswer: 1,
         explanation:
           "Declining margins with growing revenue typically suggests costs are rising faster than revenue.",
+      },
+      {
+        id: 3,
+        question:
+          "A startup's user base grew from 1,000 to 4,000 in one year. What is the growth rate?",
+        options: ["100%", "200%", "300%", "400%"],
+        correctAnswer: 2,
+        explanation:
+          "Growth from 1,000 to 4,000 is 3,000, which is 300% of the original base.",
+      },
+      {
+        id: 4,
+        question:
+          "If a marketing campaign costs $50,000 and generates $200,000 in sales, what is the ROI?",
+        options: ["300%", "400%", "200%", "100%"],
+        correctAnswer: 0,
+        explanation:
+          "ROI = (Gain - Cost)/Cost = (200,000 - 50,000)/50,000 = 3 or 300%.",
+      },
+      {
+        id: 5,
+        question:
+          "A product's price elasticity is measured at -2.5. What does this suggest?",
+        options: [
+          "Demand is highly sensitive to price changes",
+          "Demand is insensitive to price changes",
+          "The product is a necessity",
+          "The product has no substitutes",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "An elasticity of -2.5 means a 1% price increase leads to a 2.5% decrease in demand, indicating high sensitivity.",
       },
     ],
   };

@@ -27,6 +27,20 @@ const questionBank = {
       explanation:
         "Increase of 20% → 1.2x, then decrease of 20% → 0.8 * 1.2x = 0.96x (4% decrease).",
     },
+    {
+      id: 4,
+      question: "If 35% of a number is 70, what is the number?",
+      options: ["150", "200", "180", "210"],
+      correctAnswer: 1,
+      explanation: "35% of X = 70 → X = 70/0.35 = 200",
+    },
+    {
+      id: 5,
+      question: "A student scored 72 out of 80. What percentage is this?",
+      options: ["85%", "90%", "92%", "95%"],
+      correctAnswer: 1,
+      explanation: "(72/80) × 100 = 90%",
+    },
   ],
 
   profit_loss: [
@@ -54,6 +68,23 @@ const questionBank = {
       correctAnswer: 1,
       explanation:
         "Let the marked price be X. Selling price = 0.8X. Since profit is 25%, 0.8X = 1.25 × 600 → X = 1000.",
+    },
+    {
+      id: 4,
+      question:
+        "An item is sold for $360 at a 20% profit. What was its cost price?",
+      options: ["$300", "$320", "$280", "$290"],
+      correctAnswer: 0,
+      explanation: "Selling price = 120% of CP → 360 = 1.2 × CP → CP = 300",
+    },
+    {
+      id: 5,
+      question:
+        "Two items are sold for $200 each. One at 20% profit and another at 20% loss. What is the net result?",
+      options: ["No profit no loss", "4% profit", "4% loss", "20% loss"],
+      correctAnswer: 2,
+      explanation:
+        "CP1 = 200/1.2 ≈ 166.67, CP2 = 200/0.8 = 250. Total CP = 416.67, Total SP = 400. Loss ≈ 4%",
     },
   ],
 
@@ -85,6 +116,23 @@ const questionBank = {
       explanation:
         "A's full work = 20 days, B's full work = 10 days. Together: (1/20 + 1/10) = 1/6.67. Total = 7.5 days.",
     },
+    {
+      id: 4,
+      question:
+        "A can do a work in 12 days, B in 18 days. After 4 days of working together, A leaves. How long will B take to finish?",
+      options: ["5 days", "6 days", "8 days", "9 days"],
+      correctAnswer: 2,
+      explanation:
+        "In 4 days: (1/12 + 1/18) × 4 = 5/18 work done. Remaining work = 13/18. B's time = (13/18) × 18 = 13 days total - 4 days already = 9 more days",
+    },
+    {
+      id: 5,
+      question:
+        "3 pipes fill a tank in 10, 15 and 30 hours respectively. If all are open together, how long will it take?",
+      options: ["5 hours", "6 hours", "7 hours", "8 hours"],
+      correctAnswer: 0,
+      explanation: "1/10 + 1/15 + 1/30 = 6/30 = 1/5. So 5 hours to fill.",
+    },
   ],
 
   algebra: [
@@ -109,9 +157,22 @@ const questionBank = {
       correctAnswer: 1,
       explanation: "3x = 15 → x = 5",
     },
+    {
+      id: 4,
+      question: "Solve the system: x + y = 10, x - y = 2",
+      options: ["(6,4)", "(5,5)", "(7,3)", "(8,2)"],
+      correctAnswer: 0,
+      explanation: "Adding equations: 2x = 12 → x = 6. Then y = 4.",
+    },
+    {
+      id: 5,
+      question: "If (x + 1/x) = 3, what is (x² + 1/x²)?",
+      options: ["5", "7", "9", "11"],
+      correctAnswer: 1,
+      explanation: "Square both sides: x² + 2 + 1/x² = 9 → x² + 1/x² = 7",
+    },
   ],
 };
-
 const topicTitles = {
   percentage: "Percentage Problems",
   profit_loss: "Profit & Loss",

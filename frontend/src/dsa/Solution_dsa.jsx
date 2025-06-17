@@ -37,8 +37,8 @@ const Solution_dsa = () => {
 
       // Updated to use the correct API version and model
       const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-pro-latest", // Updated model name
-        apiVersion: "v1", // Updated API version
+        model: "gemini-2.0-flash", // Using the newer flash model
+        apiVersion: "v1beta",
       });
 
       const prompt = `Provide a only function solution in ${language} for "${title} without explanation and without use "`;

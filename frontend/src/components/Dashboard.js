@@ -8,11 +8,11 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
   const [dsaProgress, setDsaProgress] = useState({
-    easy: { solved: 0, total: 242 },
-    medium: { solved: 0, total: 579 },
-    hard: { solved: 0, total: 189 },
+    easy: { solved: 0, total: 428 },
+    medium: { solved: 0, total: 918 },
+    hard: { solved: 0, total: 371 },
     totalSolved: 0,
-    totalProblems: 3344,
+    totalProblems: 1720,
     lastUpdated: "",
   });
   const [isLoadingDsa, setIsLoadingDsa] = useState(true);
@@ -368,13 +368,13 @@ const Dashboard = () => {
                         <p className="text-3xl font-bold text-white">
                           {dsaProgress.totalSolved}
                           <span className="text-lg text-gray-400 ml-1">
-                            /1013
+                            /1720
                           </span>
                         </p>
                       </div>
                       <div className="text-right">
                         <div className="text-xl font-bold text-blue-400">
-                          {Math.round((dsaProgress.totalSolved / 1013) * 100)}%
+                          {Math.round((dsaProgress.totalSolved / 1720) * 100)}%
                         </div>
                         <p className="text-xs text-gray-400">Completion</p>
                       </div>
@@ -395,21 +395,21 @@ const Dashboard = () => {
                       {
                         level: "Easy",
                         solved: dsaProgress.easy.solved,
-                        total: 242,
+                        total: 428,
                         color: "from-green-500 to-emerald-500",
                         textColor: "text-green-400",
                       },
                       {
                         level: "Medium",
                         solved: dsaProgress.medium.solved,
-                        total: 579,
+                        total: 918,
                         color: "from-yellow-500 to-amber-500",
                         textColor: "text-yellow-400",
                       },
                       {
                         level: "Hard",
                         solved: dsaProgress.hard.solved,
-                        total: 189,
+                        total: 371,
                         color: "from-red-500 to-pink-500",
                         textColor: "text-red-400",
                       },

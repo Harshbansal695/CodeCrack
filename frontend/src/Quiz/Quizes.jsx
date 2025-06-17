@@ -62,44 +62,54 @@ const Quizes = () => {
     setError("");
 
     try {
+      // Verify the API key is being loaded correctly
+      console.log(
+        "Using API Key:",
+        process.env.REACT_APP_GEMINI_API_KEY ? "Exists" : "Missing"
+      );
+
       const genAI = new GoogleGenerativeAI(
         process.env.REACT_APP_GEMINI_API_KEY
       );
+
       const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-pro-latest",
-        apiVersion: "v1",
+        model: "gemini-2.0-flash", // Using the newer flash model
+        apiVersion: "v1beta", // Matching the endpoint version
       });
 
       const difficultyText = ["easy", "medium", "hard"][quizParams.difficulty];
 
       const prompt = `
-        Generate ${quizParams.totalQuestions} ${difficultyText} difficulty multiple-choice questions on "${quizParams.topic}".
-        Format output as JSON:
-        {
-          "quizName": "${quizParams.quizName}",
-          "topic": "${quizParams.topic}",
-          "difficulty": "${difficultyText}",
-          "questions": [
-            {
-              "question": "Question text?",
-              "options": {
-                "a": "Option A",
-                "b": "Option B",
-                "c": "Option C",
-                "d": "Option D"
-              },
-              "answer": "a"
-            }
-          ]
-        }
-      `;
+      Generate ${quizParams.totalQuestions} ${difficultyText} difficulty multiple-choice questions on "${quizParams.topic}".
+      Format output as JSON:
+      {
+        "quizName": "${quizParams.quizName}",
+        "topic": "${quizParams.topic}",
+        "difficulty": "${difficultyText}",
+        "questions": [
+          {
+            "question": "Question text?",
+            "options": {
+              "a": "Option A",
+              "b": "Option B",
+              "c": "Option C",
+              "d": "Option D"
+            },
+            "answer": "a"
+          }
+        ]
+      }
+      Return only the JSON with no additional text or markdown.
+    `;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
-      const jsonMatch = response.text().match(/\{[\s\S]*\}/);
+      const text = response.text();
 
+      // More robust JSON parsing
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
       if (!jsonMatch) {
-        throw new Error("Could not parse quiz questions");
+        throw new Error("Could not parse quiz questions. Response: " + text);
       }
 
       const parsedData = JSON.parse(jsonMatch[0]);
@@ -114,7 +124,11 @@ const Quizes = () => {
       navigate("/quize");
     } catch (err) {
       console.error("API Error:", err);
-      setError("Failed to generate questions. Please try again.");
+      setError(
+        err.message.includes("API_KEY_INVALID") || err.message.includes("400")
+          ? "Invalid API key. Please check your API key configuration."
+          : "Failed to generate questions. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }

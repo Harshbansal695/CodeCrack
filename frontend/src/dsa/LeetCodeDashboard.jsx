@@ -191,9 +191,6 @@ const LeetCodeDashboard = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [randomQuestion, setRandomQuestion] = useState(null);
   const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
-  const [loadedCompanies, setLoadedCompanies] = useState([]);
-  const [hasMoreData, setHasMoreData] = useState(true);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const companyNames = [
     "accenture",
@@ -466,26 +463,41 @@ const LeetCodeDashboard = () => {
     "zscaler",
     "zynga",
   ];
-  // Split companyNames into chunks for lazy loading
-  const COMPANY_CHUNK_SIZE = 20;
-  const companyChunks = useMemo(() => {
-    const chunks = [];
-    for (let i = 0; i < companyNames.length; i += COMPANY_CHUNK_SIZE) {
-      chunks.push(companyNames.slice(i, i + COMPANY_CHUNK_SIZE));
-    }
-    return chunks;
-  }, []);
 
-  // Load initial data
+  // Load CSV data
   useEffect(() => {
-    const loadInitialData = async () => {
+    const loadData = async () => {
       try {
-        setLoading(true);
-        const initialChunk = companyChunks[0];
-        const loadedQuestions = await loadCompanyData(initialChunk);
-        setQuestions(loadedQuestions);
-        setLoadedCompanies(initialChunk);
-        setHasMoreData(companyChunks.length > 1);
+        const allQuestions = [];
+        let loadedCount = 0;
+
+        for (const company of companyNames) {
+          try {
+            const response = await fetch(`/data/${company}.csv`);
+            const csvText = await response.text();
+            const parsed = Papa.parse(csvText, { header: true });
+
+            const questions = parsed.data.slice(0, -1).map((q) => ({
+              ...q,
+              company,
+              ID: q.id || q.ID,
+              Title: q.title || q.Title,
+              URL: q.url || q.URL || "",
+              Difficulty: q.difficulty || q.Difficulty,
+              "Acceptance %": q.acceptance || q["Acceptance %"],
+              "Frequency %": q.frequency || q["Frequency %"],
+              Topics: q.topics || q.Topics || "",
+            }));
+
+            allQuestions.push(...questions);
+            loadedCount++;
+            setProgress(Math.round((loadedCount / companyNames.length) * 100));
+          } catch (err) {
+            console.error(`Error loading ${company}.csv`, err);
+          }
+        }
+
+        setQuestions(allQuestions);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -493,69 +505,8 @@ const LeetCodeDashboard = () => {
       }
     };
 
-    loadInitialData();
+    loadData();
   }, []);
-
-  // Function to load data for a specific set of companies
-  const loadCompanyData = async (companies) => {
-    const allQuestions = [];
-    let loadedCount = 0;
-
-    for (const company of companies) {
-      try {
-        const response = await fetch(`/data/${company}.csv`);
-        const csvText = await response.text();
-        const parsed = Papa.parse(csvText, { header: true });
-
-        const questions = parsed.data.slice(0, -1).map((q) => ({
-          ...q,
-          company,
-          ID: q.id || q.ID,
-          Title: q.title || q.Title,
-          URL: q.url || q.URL || "",
-          Difficulty: q.difficulty || q.Difficulty,
-          "Acceptance %": q.acceptance || q["Acceptance %"],
-          "Frequency %": q.frequency || q["Frequency %"],
-          Topics: q.topics || q.Topics || "",
-        }));
-
-        allQuestions.push(...questions);
-        loadedCount++;
-        setProgress(Math.round((loadedCount / companies.length) * 100));
-      } catch (err) {
-        console.error(`Error loading ${company}.csv`, err);
-      }
-    }
-
-    return allQuestions;
-  };
-
-  // Function to load more data
-  const loadMoreData = async () => {
-    if (isLoadingMore || !hasMoreData) return;
-
-    try {
-      setIsLoadingMore(true);
-      const currentChunkIndex = Math.floor(
-        loadedCompanies.length / COMPANY_CHUNK_SIZE
-      );
-      const nextChunk = companyChunks[currentChunkIndex + 1];
-
-      if (!nextChunk) {
-        setHasMoreData(false);
-        return;
-      }
-
-      const newQuestions = await loadCompanyData(nextChunk);
-      setQuestions((prev) => [...prev, ...newQuestions]);
-      setLoadedCompanies((prev) => [...prev, ...nextChunk]);
-      setHasMoreData(currentChunkIndex + 2 < companyChunks.length);
-    } catch (err) {
-      console.error("Error loading more data:", err);
-    } finally {
-      setIsLoadingMore(false);
-    }
-  };
 
   // Load completed questions when component mounts
   useEffect(() => {
@@ -884,7 +835,7 @@ const LeetCodeDashboard = () => {
         <CardHeader>
           <CardTitle>Practice Questions</CardTitle>
           <CardDescription>
-            Browse through {1013} LeetCode questions
+            Browse through {totalQuestions.toLocaleString()} LeetCode questions
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -1189,26 +1140,6 @@ const LeetCodeDashboard = () => {
           </div>
         </CardContent>
       </Card>
-
-      {/* Add Load More button */}
-      {hasMoreData && !loading && (
-        <div className="flex justify-center mt-6">
-          <Button
-            onClick={loadMoreData}
-            disabled={isLoadingMore}
-            className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-700 hover:to-indigo-700"
-          >
-            {isLoadingMore ? (
-              <div className="flex items-center">
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2"></div>
-                Loading...
-              </div>
-            ) : (
-              "Load More Questions"
-            )}
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
